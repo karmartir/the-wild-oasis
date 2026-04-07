@@ -1,32 +1,11 @@
 import styled from "styled-components";
+import GlobalStyles from "./styles/GlobalStyles";
+import Button from "./ui/Button";
+import Input from "./ui/Input";
 
 const H1 = styled.h1`
   font-size: 30px;
   font-weight: 600;
-`;
-
-const Button = styled.button`
-  font-size: 1.4rem;
-  padding: 0.8rem 1.2rem;
-  border: none;
-  border-radius: 7px;
-  background-color: purple;
-  color: #fff;
-  font-weight: 500;
-  cursor: pointer;
-  margin: 20px;
-`;
-
-const Input = styled.input`
-  font-size: 1.4rem;
-  padding: 0.8rem 1.2rem;
-  border: none;
-  border-radius: 7px;
-  background-color: #fff;
-  color: #000;
-  font-weight: 500;
-  cursor: pointer;
-  margin: 20px;
 `;
 
 const StyledApp = styled.main`
@@ -35,12 +14,15 @@ const StyledApp = styled.main`
 `;
 function App() {
   return (
-    <StyledApp>
-      <H1>The Wild Oasis</H1>
-      <Button onClick={() => alert("check in")}>Check in</Button>
-      <Button onClick={() => alert("check out")}>Check out</Button>
-      <Input type="number" placeholder="Number of guests" />
-    </StyledApp>
+    <>
+      <GlobalStyles />
+      <StyledApp>
+        <H1>The Wild Oasis</H1>
+        <Button onClick={() => alert("check in")}>Check in</Button>
+        <Button onClick={() => alert("check out")}>Check out</Button>
+        <Input type="number" placeholder="Number of guests" />
+      </StyledApp>
+    </>
   );
 }
 
