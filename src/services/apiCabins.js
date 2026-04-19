@@ -12,7 +12,20 @@ export async function getCabins() {
     throw new Error("Cabins could not be loaded");
   }
 }
-
+export async function createCabin(newCabin) {
+  // REMEMBER Change RLS POLICIES in db after creating authorization!!!
+  try {
+    const { data, error } = await supabase.from("cabins").insert([newCabin]);
+    if (error) {
+      console.error("Supabase error", error);
+      throw new Error(error.message);
+    }
+    return data;
+  } catch (error) {
+    console.error(error);
+    throw new Error("Cabin could not be created");
+  }
+}
 export async function deleteCabin(id) {
   // REMEMBER RLS POLICIES
   const { data, error } = await supabase.from("cabins").delete().eq("id", id);
