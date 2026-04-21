@@ -7,6 +7,7 @@ import {
   HiOutlineHomeModern,
   HiOutlineUsers,
 } from "react-icons/hi2";
+import { useCabins } from "../features/cabins/useCabins";
 
 const NavList = styled.ul`
   display: flex;
@@ -53,6 +54,8 @@ const StyledNavLink = styled(NavLink)`
   }
 `;
 function MainNav() {
+  const { isLoading, cabins, error } = useCabins();
+  const numCabins = cabins?.length;
   return (
     <nav>
       <NavList>
@@ -71,7 +74,15 @@ function MainNav() {
         <li>
           <StyledNavLink to="/cabins">
             <HiOutlineHomeModern />
-            <span>Cabins</span>
+            {isLoading ? (
+              "Loading..."
+            ) : numCabins == 0 ? (
+              "No cabins"
+            ) : error ? (
+              "Error"
+            ) : (
+              <span>Cabins ({numCabins})</span>
+            )}
           </StyledNavLink>
         </li>
         <li>
