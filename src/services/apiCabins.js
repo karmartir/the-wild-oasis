@@ -17,7 +17,7 @@ export async function getCabins() {
 
 // Create Cabin
 export async function createEditCabin(newCabin, id) {
-  console.log(newCabin, id);
+  // console.log(newCabin, id);
   // REMEMBER Change RLS POLICIES in db after creating authorization!!!
   // Generate a random name for the image
   const hasImagePath = newCabin.image?.startsWith?.(supabaseUrl);
@@ -42,6 +42,7 @@ export async function createEditCabin(newCabin, id) {
       throw new Error(error.message);
     }
     // // 2. Upload image (only if create cabin was successful)
+    if (hasImagePath) return data;
     const { error: storageError } = await supabase.storage
       .from("cabin-images")
       .upload(imageName, newCabin.image);
