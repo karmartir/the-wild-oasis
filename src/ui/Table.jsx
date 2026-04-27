@@ -88,8 +88,9 @@ function Row({ children }) {
   );
 }
 
-function Body({ children }) {
-  return <StyledBody>{children}</StyledBody>;
+function Body({ data, render }) {
+  if (!data?.length) return <Empty>No data</Empty>;
+  return <StyledBody>{data.map(render)}</StyledBody>;
 }
 
 Table.Header = Header;
