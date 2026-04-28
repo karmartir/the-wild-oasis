@@ -40,6 +40,7 @@ function Filter({ filterField, options }) {
   const [searchParams, setSearchParams] = useSearchParams();
   const currentFilter = searchParams.get(filterField) || options.at(0).value;
   function handleClick(value) {
+    if (value === currentFilter) return;
     const newParams = new URLSearchParams(searchParams);
     newParams.set(filterField, value);
     setSearchParams(newParams);
@@ -57,6 +58,9 @@ function Filter({ filterField, options }) {
           key={option.value}
           $active={option.value === currentFilter}
           onClick={() => handleClick(option.value)}
+
+          /* i'd prefer disable in function handler vs here as implementing in original version (no annoying disabled icon in ui)
+            disabled={option.value === currentFilter} */
         >
           {option.label}
         </FilterButton>
