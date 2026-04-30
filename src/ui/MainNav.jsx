@@ -8,6 +8,7 @@ import {
   HiOutlineUsers,
 } from "react-icons/hi2";
 import { useCabins } from "../features/cabins/useCabins";
+import { useBookings } from "../features/bookings/useBookings";
 
 const NavList = styled.ul`
   display: flex;
@@ -55,7 +56,9 @@ const StyledNavLink = styled(NavLink)`
 `;
 function MainNav() {
   const { isLoading, cabins, error } = useCabins();
+  const { isLoading: isBookingLoading, bookings } = useBookings();
   const numCabins = cabins?.length;
+  const numBookings = bookings?.length;
   return (
     <nav>
       <NavList>
@@ -68,7 +71,15 @@ function MainNav() {
         <li>
           <StyledNavLink to="/bookings">
             <HiOutlineCalendarDays />
-            <span>Bookings</span>
+            {isBookingLoading ? (
+              "Loading..."
+            ) : numBookings == 0 ? (
+              "No bookings"
+            ) : error ? (
+              "Error"
+            ) : (
+              <span>Bookings ({numBookings})</span>
+            )}
           </StyledNavLink>
         </li>
         <li>
