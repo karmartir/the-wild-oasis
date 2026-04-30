@@ -12,7 +12,6 @@ import PageNotFound from "./pages/PageNotFound";
 import Login from "./pages/Login";
 import AppLayout from "./ui/AppLayout";
 import { Toaster } from "react-hot-toast";
-import toast from "../node_modules/react-hot-toast/src/index";
 
 const queryClient = new QueryClient({
   defaultOptions: {
