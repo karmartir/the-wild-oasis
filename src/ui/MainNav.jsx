@@ -56,9 +56,9 @@ const StyledNavLink = styled(NavLink)`
 `;
 function MainNav() {
   const { isLoading, cabins, error } = useCabins();
-  const { isLoading: isBookingLoading, bookings } = useBookings();
+  const { isLoading: isBookingLoading, count } = useBookings();
   const numCabins = cabins?.length;
-  const numBookings = bookings?.length;
+  const numBookings = count ?? 0;
   return (
     <nav>
       <NavList>
