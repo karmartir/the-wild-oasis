@@ -8,6 +8,7 @@ import Modal from "../../ui/Modal";
 import ConfirmDelete from "../../ui/ConfirmDelete";
 import Table from "../../ui/Table";
 import Menus from "../../ui/Menus";
+import Spinner from "../../ui/Spinner";
 
 const Img = styled.img`
   display: block;
@@ -59,7 +60,7 @@ function CabinRow({ cabin }) {
       description,
     });
   }
-
+  if (isCreating) return <Spinner />;
   return (
     <Table.Row>
       <Img src={image} />
