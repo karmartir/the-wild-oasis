@@ -43,6 +43,7 @@ function Filter({ filterField, options }) {
     if (value === currentFilter) return;
     const newParams = new URLSearchParams(searchParams);
     newParams.set(filterField, value);
+    if (searchParams.get("page")) newParams.set("page", 1);
     setSearchParams(newParams);
   }
 
