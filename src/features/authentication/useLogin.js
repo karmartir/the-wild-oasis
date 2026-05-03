@@ -13,7 +13,7 @@ export function useLogin() {
       toast.success(`Welcome back ${data.user.email}`, {
         position: "top-right",
       });
-      navigate("/dashboard");
+      navigate("/dashboard", { replace: true });
     },
     onError: (err) => {
       console.log("Error", err);
