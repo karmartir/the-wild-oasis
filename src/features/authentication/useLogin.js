@@ -9,10 +9,14 @@ export function useLogin() {
   const { mutate: login, isLoading } = useMutation({
     mutationFn: ({ email, password }) => loginApi({ email, password }),
     onSuccess: (data) => {
+      console.log("data", data);
       queryClient.setQueryData(["user"], data.user);
-      toast.success(`Welcome back ${data.user.email}`, {
-        position: "top-right",
-      });
+      toast.success(
+        `Welcome back ${data.user.user_metadata.fullName || data.user.email}`,
+        {
+          position: "top-center",
+        },
+      );
       navigate("/dashboard", { replace: true });
     },
     onError: (err) => {
