@@ -40,7 +40,6 @@ function ErrorFallback({ error, resetErrorBoundary }) {
       <StyledErrorFallback>
         <Box>
           <Heading as="h1">Something went wrong 🥲</Heading>
-          <p>{error.message}</p>
           <p>
             <i>{error.statusText || error.message}</i>
           </p>
